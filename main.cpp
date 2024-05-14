@@ -1,7 +1,15 @@
 #include <iostream>
+#include <string>
+#include <fstream>
 
-int main()
+int main(int argc, char* argv[])
 {
-    std::cout<< " ! " << std::endl;
-    return 0;
+    if(argc != 2)
+    {
+        std::cerr << "Incorrect input" << std::endl;
+        return 1;
+    }
+    const std::string filename = argv[1];
+
+
 }
