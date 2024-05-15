@@ -1,12 +1,11 @@
-#include "Computer_club.h"
+#pragma once
+
+#include "Parser.h"
 #include <fstream>
 
 class Reader
 {
-private:
-    const std::string filename;
-public:
-    explicit Reader(const std::string& str) noexcept: filename(str) {}
-    Computer_club read();
 
+public:
+    static Computer_club read(const std::string& filename);
 };
