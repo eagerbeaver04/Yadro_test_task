@@ -48,7 +48,7 @@ Computer_club Reader::read(const std::string& filename)
         case 2:
             try_catch_call(&Computer_club::sit_down, &club, event);
             break;
-        default:
+        default://other cases
          break;
         }
     }

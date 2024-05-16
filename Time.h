@@ -15,8 +15,8 @@ struct Time
         os << value.second;
         return os.str();
     }
-    Time operator - (const Time& time);
-    Time operator + (const Time& time);
+    Time operator - (const Time& time);//coming soon
+    Time operator + (const Time& time);//comin soon
     bool operator<(const Time &time)
     {
         int time_minutes = 60 * value.first + value.second;
