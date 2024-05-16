@@ -1,6 +1,4 @@
-#include <iostream>
-#include <string>
-#include <fstream>
+#include "Reader.h"
 
 int main(int argc, char* argv[])
 {
@@ -9,7 +7,8 @@ int main(int argc, char* argv[])
         std::cerr << "Incorrect input" << std::endl;
         return 1;
     }
-    const std::string filename = argv[1];
+    
+    Reader::read(argv[1]);
 
 
 }

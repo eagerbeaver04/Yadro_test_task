@@ -1,7 +1,7 @@
 #pragma once
 
+#include "Event.h"
 #include <queue>
-#include <string>
 #include <iostream>
 
 struct Client_info

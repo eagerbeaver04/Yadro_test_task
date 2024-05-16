@@ -1,13 +1,10 @@
-#include <string>
+#include "Message.h"
 
-static std::pair<int, int> 
-    time_string_to_pair(const std::string& time)
+struct Event
 {
-    return { std::atoi(time.substr(0, 2).c_str()), std::atoi(time.substr(3, 2).c_str()) };
-}
-
-// class Event
-// {
-// private:
-//     std::pair<int,int> time;
-// }
+    using time_t = std::pair<int, int>;
+    time_t time;
+    int id;
+    std::string name;
+    std::string extra_info;
+};

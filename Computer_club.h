@@ -2,7 +2,6 @@
 
 #include "Table.h"
 #include <vector>
-#include <sstream>
 
 class Computer_club
 {
