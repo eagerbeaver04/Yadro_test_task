@@ -1,10 +1,13 @@
 #include "Reader.h"
 
-Computer_club Reader::read(const std::string& filename)
+void Reader::read(const std::string& filename)
 {
     std::ifstream file(filename);
     if (!file.is_open())
-        throw std::runtime_error(Message::make_string("Error: Unable to open file ", filename));
+    {
+        std::cout << "Error: Unable to open file " <<  filename << std::endl;
+        return;
+    }
 
 
     std::string line;
@@ -57,5 +60,4 @@ Computer_club Reader::read(const std::string& filename)
 
     file.close();
 
-    return club;
 }

@@ -19,5 +19,5 @@ private:
         }
     }
 public:
-    static Computer_club read(const std::string& filename);
+    static void read(const std::string& filename);
 };

@@ -1,8 +1,10 @@
 #include "Computer_club.h"
 
-int Computer_club::get_current_profit(int table_index, Time event_time)
+void Computer_club::count_client_activity(int table_index, Time event_time)
 {
-    return 0; // do logic
+    Time current = tables[table_index].start_time - event_time;
+    employment[table_index] += current;
+    profit[table_index]+=current.ceil_to_hours() * cost_per_hour;
 }
 
 void Computer_club::add_client(const Event& event)
@@ -41,8 +43,7 @@ void Computer_club::sit_down(const Event& event)
         if (tables[desired_table].is_avaliable)
         {
             int index = std::distance(tables.begin(), client) - 1;
-            profit[index] += get_current_profit(index, event.time);
-            //employment[index]+=
+            count_client_activity(index, event.time);
             (*client).is_avaliable = true;
             tables[desired_table] = { false, event.name, event.time };
             return;

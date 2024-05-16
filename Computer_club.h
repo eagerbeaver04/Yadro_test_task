@@ -15,7 +15,7 @@ private:
     std::vector<int> profit;
     std::vector<Table> tables;
     std::vector<Time> employment;
-    int get_current_profit(int table_index, Time event_time);
+    void count_client_activity(int table_index, Time event_time);
 public : 
     Computer_club(int number_of_tables1, int cost_per_hour1, std::pair<Time, Time> opening_time1) :
      number_of_tables(number_of_tables1), cost_per_hour(cost_per_hour1),
