@@ -19,12 +19,10 @@ Computer_club Reader::read(const std::string& filename)
     int cost_per_hour = std::atoi(line.c_str());
 
     Computer_club club(number_of_tables, cost_per_hour, opening_time) ;
-    std::cout << number_of_tables << " "<< cost_per_hour << " ";
-    std::cout << opening_time.first.first << " " << opening_time.first.second << " "
-              << opening_time.second.first << " " << opening_time.second.second;
+
     while (std::getline(file, line))
     {
-        //do stuff
+       std::cout <<  Parser::parse_action_line(line).serialize() << std::endl;
     }
 
     file.close();

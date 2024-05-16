@@ -2,9 +2,13 @@
 
 struct Event
 {
-    using time_t = std::pair<int, int>;
-    time_t time;
+    using time1 = std::pair<int, int>;
+    time1 time;
     int id;
     std::string name;
     std::string extra_info;
+    std::string serialize()
+    {
+        return Message::make_string(time.first, ":", time.second, " ", id, " ", name, " ", extra_info);
+    }
 };
