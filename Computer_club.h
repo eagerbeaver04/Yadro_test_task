@@ -2,6 +2,7 @@
 
 #include "Table.h"
 #include <vector>
+#include <set>
 
 class Computer_club
 {
@@ -11,6 +12,7 @@ private:
     int cost_per_hour;
     std::pair<time, time> opening_time;
     std::vector<Table> tables;
+    std::set<std::string> clients_queue;
     std::vector<int> profit;
 public:
     Computer_club(int number_of_tables1, int cost_per_hour1, std::pair<time, time> opening_time1) : 
@@ -19,4 +21,7 @@ public:
         profit = std::vector(number_of_tables,0);
         tables = std::vector(number_of_tables, Table());
     }
+
+    void add_client(const std::string& client_name);
+
 };

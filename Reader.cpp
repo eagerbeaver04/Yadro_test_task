@@ -43,8 +43,17 @@ Computer_club Reader::read(const std::string& filename)
                 std::cout << "NotOpenYet" << std::endl;
                 continue;
             }
-         break;
-       
+            try
+            {
+                club.add_client(event.name);
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << e.what() << std::endl;
+            }
+            
+            break;
+
         default:
          break;
         }
