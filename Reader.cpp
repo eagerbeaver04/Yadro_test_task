@@ -6,7 +6,6 @@ Computer_club Reader::read(const std::string& filename)
     if (!file.is_open())
         throw std::runtime_error(Message::make_string("Error: Unable to open file ", filename));
     
-
     using time = std::pair<int, int>;
 
     std::string line;
@@ -15,17 +14,27 @@ Computer_club Reader::read(const std::string& filename)
     int number_of_tables = std::atoi(line.c_str());
     std::getline(file, line);
     std::pair<time, time> opening_time = Parser::parse_time_line(line);
-    
+
     std::getline(file, line);
     int cost_per_hour = std::atoi(line.c_str());
 
     Computer_club club(number_of_tables, cost_per_hour, opening_time) ;
+
+    std::cout << Parser::time_to_string(opening_time.first) << std::endl;
+
     Event event;
     while (std::getline(file, line))
-    {
-        event =  Parser::parse_action_line(line);
-        std::cout << event.serialize() << std::endl;
-        
+    {   
+        try
+        {
+            event = Parser::parse_action_line(line);
+            std::cout << Parser::Event_to_string(event) << std::endl;
+        }
+        catch(const std::exception& error)
+        {
+            std::cout << error.what() << std::endl;
+            continue;
+        }
         switch (event.id)
         {
         case 1:
@@ -40,6 +49,8 @@ Computer_club Reader::read(const std::string& filename)
          break;
         }
     }
+
+    std::cout << Parser::time_to_string(opening_time.second) << std::endl;
 
     file.close();
 

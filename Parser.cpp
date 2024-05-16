@@ -1,5 +1,22 @@
 #include "Parser.h"
 
+std::string Parser::time_to_string(const Parser::time& pair)
+{
+    std::ostringstream os;
+    if(pair.first < 10)
+        os << 0;
+    os << pair.first << ":";
+    if(pair.second < 10)
+        os << 0;
+    os << pair.second;
+    return os.str();
+}
+
+std::string Parser::Event_to_string(const Event& event)
+{
+    return Message::make_string(time_to_string(event.time), " ", 
+        event.id, " ", event.name, " ", event.extra_info);
+}
 
 Parser::str_iter Parser::first_space_after_word(Parser::str_iter& iter, Parser::str_iter& end_iter)
 {

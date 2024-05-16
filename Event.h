@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Message.h"
 
 struct Event
@@ -7,10 +9,6 @@ struct Event
     int id;
     std::string name;
     std::string extra_info;
-    std::string serialize()
-    {
-        return Message::make_string(time.first, ":", time.second, " ", id, " ", name, " ", extra_info);
-    }
 
     bool is_time_less(const time1& lower_bound)
     {
