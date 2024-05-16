@@ -37,12 +37,12 @@ void Computer_club::sit_down(const Event& event)
         }
     }
     auto client = std::find_if(tables.begin(), tables.end(), [&event](Table& table)
-        {   return table.is_available && table.name == event.name;});
+        {   return !table.is_available && table.name == event.name;});
     if(client != tables.end())
     {
         if (tables[desired_table].is_available)
         {
-            int index = std::distance(tables.begin(), client) - 1;
+            int index = std::distance(tables.begin(), client);
             count_client_activity(index, event.time);
             (*client).is_available = true;
             tables[desired_table] = { false, event.name, event.time };
@@ -70,8 +70,8 @@ void Computer_club::client_wait(const Event& event)
     if(queue_size > number_of_tables)
     {
         clients_queue.erase(client);
-        throw(std::runtime_error(Message::make_string(
-            event.time.to_string(), " ", 11, " ", event.name)));
+        std::cout << Message::make_string(
+            event.time.to_string(), " ", 11, " ", event.name) << std::endl;
     }
     if (number_of_available_tables > 0)
     {
@@ -81,3 +81,65 @@ void Computer_club::client_wait(const Event& event)
     
 }
 
+void Computer_club::erase_client(const Event &event)
+{   
+    
+    {
+        auto client = std::find_if(tables.begin(), tables.end(), [&event](Table &table)
+                               { return !table.is_available && table.name == event.name; });
+        if(client != tables.end())
+        {
+            int index = std::distance(tables.begin(), client);
+
+            count_client_activity(index, event.time);
+            (*client).is_available = true;    
+            if(!clients_queue.empty())
+            {
+                std::string name = *clients_queue.begin();
+                tables[index] = {false, name, event.time};
+                clients_queue.erase(clients_queue.begin());
+               std::cout << Message::make_string(
+                    event.time.to_string(), " ", 12, " ", name, " ", index+1) << std::endl;
+            }
+            return;
+        }
+       
+    }
+    auto client = std::find(clients_queue.begin(), clients_queue.end(), event.name);
+    if(client != clients_queue.end())
+    {
+        clients_queue.erase(client);
+        return;
+    }
+    throw(std::runtime_error(Message::make_string(
+        event.time.to_string(), " ", 13, " ", "ClientUnknown")));
+}
+
+
+void Computer_club::kick_out_clients()
+{
+    std::vector<std::string> clients;
+    for(int i =0; i < tables.size(); ++i)
+    {
+        if(!tables[i].is_available)
+        {
+            tables[i].is_available = true;
+            count_client_activity(i, opening_time.second);
+            clients.push_back(tables[i].name);
+        }
+    }
+    for(auto&& client : clients_queue)
+       clients.push_back(client);
+    
+    std::sort(clients.begin(), clients.end());
+    for(auto&& client : clients)
+        std::cout << Message::make_string(
+        opening_time.second.to_string(), " ", 11, " ", client) << std::endl;
+}
+
+void Computer_club::print_profit()
+{
+    for(int i =0; i< profit.size(); ++i)
+        std::cout << Message::make_string(i+1, " ", profit[i], " ", employment[i].to_string())
+         << std::endl;
+}

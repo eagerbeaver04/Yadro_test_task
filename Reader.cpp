@@ -55,13 +55,20 @@ void Reader::read(const std::string& filename)
         case 3:
             try_catch_call(&Computer_club::client_wait, &club, event);
             break;
-        default://other cases
-         break;
+        case 4:
+            try_catch_call(&Computer_club::erase_client, &club, event);
+            break;
+        default:
+            std::cerr << "Invalid id command in line" << line << std::endl;
+            break;
         }
     }
+    club.kick_out_clients();
 
     std::cout << opening_time.second.to_string() << std::endl;
 
+    club.print_profit();
+    
     file.close();
 
 }

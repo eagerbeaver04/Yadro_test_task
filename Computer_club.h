@@ -2,7 +2,7 @@
 
 #include "Table.h"
 #include <vector>
-#include <set>
+#include <unordered_set>
 #include <algorithm>
 
 class Computer_club
@@ -11,7 +11,7 @@ private:
     int number_of_tables;
     int cost_per_hour;
     std::pair<Time, Time> opening_time;
-    std::set<std::string> clients_queue;
+    std::unordered_set<std::string> clients_queue;
     std::vector<int> profit;
     std::vector<Table> tables;
     std::vector<Time> employment;
@@ -34,4 +34,7 @@ public :
 
     void erase_client(const Event& event);
 
+    void kick_out_clients();
+
+    void print_profit();
 };
