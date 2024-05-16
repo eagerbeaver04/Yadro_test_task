@@ -22,6 +22,7 @@ Computer_club Reader::read(const std::string& filename)
     std::cout << opening_time.first.to_string() << std::endl;
 
     Event event;
+
     while (std::getline(file, line))
     {   
         try
@@ -37,23 +38,16 @@ Computer_club Reader::read(const std::string& filename)
         switch (event.id)
         {
         case 1:
-            if (event.is_time_less(opening_time.first) || event.is_time_bigger(opening_time.second))
+            if (event.time < opening_time.first || event.time > opening_time.second)
             {
                 std::cout << "NotOpenYet" << std::endl;
                 continue;
             }
-            try
-            {
-                club.add_client(event);
-            }
-            catch(const std::exception& e)
-            {
-                std::cerr << e.what() << std::endl;
-            }
-            
+            try_catch_call(&Computer_club::add_client, &club, event);          
             break;
         case 2:
-           try_catch_call(&Computer_club::sit_down, &club, event);
+            try_catch_call(&Computer_club::sit_down, &club, event);
+            break;
         default:
          break;
         }
