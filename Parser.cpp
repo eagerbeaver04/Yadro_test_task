@@ -1,23 +1,5 @@
 #include "Parser.h"
 
-std::string Parser::time_to_string(const Parser::time& pair)
-{
-    std::ostringstream os;
-    if(pair.first < 10)
-        os << 0;
-    os << pair.first << ":";
-    if(pair.second < 10)
-        os << 0;
-    os << pair.second;
-    return os.str();
-}
-
-std::string Parser::Event_to_string(const Event& event)
-{
-    return Message::make_string(time_to_string(event.time), " ", 
-        event.id, " ", event.name, " ", event.extra_info);
-}
-
 Parser::str_iter Parser::first_space_after_word(Parser::str_iter& iter, Parser::str_iter& end_iter)
 {
         return std::find_if(
@@ -45,7 +27,7 @@ void Parser::trim_in_place(std::string &line)
     line = (back <= front ? std::string() : std::string(front, back));
 }
 
-Parser::time Parser::parse_time(const std::string& line)
+Time Parser::parse_time(const std::string& line)
 {
 
     auto colon = std::find_if(line.begin(), line.end(), [](int c)
@@ -53,11 +35,11 @@ Parser::time Parser::parse_time(const std::string& line)
     if(colon == line.end())
         throw std::runtime_error(Message::make_string("Incorrect data in line: ", line));
 
-    return {std::atoi(std::string(line.begin(), colon).c_str()),
-     std::atoi(std::string(++colon, line.end()).c_str())};
+    return {std::make_pair<int,int>(std::atoi(std::string(line.begin(), colon).c_str()),
+     std::atoi(std::string(++colon, line.end()).c_str()))};
 }
 
-std::pair<Parser::time, Parser::time> 
+std::pair<Time, Time> 
     Parser::parse_time_line(const std::string& line)
 {
     std::string trimmed_line = trim(line);
@@ -77,7 +59,7 @@ Event Parser::parse_action_line(const std::string& line)
     if(iter1 == end)
         throw std::runtime_error(Message::make_string("Incorrect data in line: ", line));
 
-    time opening_time = parse_time(std::string(begin, end));
+    Time opening_time = parse_time(std::string(begin, end));
     
     auto iter2 = first_space_after_word(iter1,end);
 
