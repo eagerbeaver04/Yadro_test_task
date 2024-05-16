@@ -30,4 +30,8 @@ public :
 
     void sit_down(const Event& event);
 
+    void client_wait(const Event& event);
+
+    void erase_client(const Event& event);
+
 };
