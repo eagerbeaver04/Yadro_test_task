@@ -1,3 +1,1 @@
-
-
 add_library(reader_lib SHARED Computer_club.cpp Parser.cpp Reader.cpp)

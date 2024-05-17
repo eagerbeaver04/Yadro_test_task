@@ -65,22 +65,61 @@ To get a copy of this project on your computer, follow these steps:
    ```
 
 ## Building and Running
+1. Using only gcc compiler
 To build and run the project, follow these steps:
-1. Navigate to the project folder.
+    1.1. Check the gcc compiler version:
+        ```sh
+        g++ --version
+        ```
+        If the compiler is not installed, you need to install it.
 
-2. Check the gcc compiler version:
+    1.2. Navigate to the project folder.
+
+    1.3 Navigate to `src` directory:
+        ```sh
+        cd src
+        ```
+    1.4. Compile the project:
     ```sh
+    g++ ReaderLib/Computer_club.cpp ReaderLib/Parser.cpp ReaderLib/Reader.cpp main.cpp -o main_executable
+    ```
+
+    1.5. Run the program with the path to input file:
+    ```sh
+    ./main_executable ../test.txt
+    ```
+
+2. Using Cmake utils
+To build and run the project, follow these steps:
+    2.1 Check the gcc compiler version:
+     ```sh
     g++ --version
     ```
     If the compiler is not installed, you need to install it.
-
-4. Compile the project:
+    2.2 Navigate to the project folder
+    2.3 Create `build` directory
     ```sh
-    g++ Computer_club.cpp Parser.cpp Reader.cpp main.cpp -o computer_club
+    mkdir build
     ```
-
-5. Run the program with the input file:
+    2.4 Navigate to `build` folder
     ```sh
-    ./computer_club test.txt
+    cd build
     ```
+    2.5 Build project
+    ```sh 
+    cmake ..
+    ```
+    2.6 Make project
+    ```sh 
+    make
+    ```
+    2.7. Navigate to `src` folder
+    ```sh
+    cd src
+    ```
+    1.5. Run the program with the path to input file:
+    ```sh
+    ./main_executable ../../test.txt
+    ``` 
+
 

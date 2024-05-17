@@ -5,6 +5,7 @@
 struct Time
 {
     std::pair<int,int> value;
+
     std::string to_string() const
     {
         std::ostringstream os;
@@ -16,6 +17,7 @@ struct Time
         os << value.second;
         return os.str();
     }
+
     Time& operator+=(const Time &time)
     {
         value.second += time.value.second;
@@ -27,6 +29,7 @@ struct Time
         value.first += time.value.first;
         return *this;
     }
+
     Time& operator-=(const Time &time)
     {
         if (value.second < time.value.second)
@@ -51,6 +54,7 @@ struct Time
         sum+=time;
         return sum;
     }
+    
     bool operator<(const Time &time) const 
     {
         int time_minutes = 60 * value.first + value.second;
@@ -59,6 +63,7 @@ struct Time
             return true;
         return false;
     }
+
     bool operator > (const Time& time) const
     {
         int time_minutes = 60 * value.first + value.second;
@@ -67,6 +72,7 @@ struct Time
             return true;
         return false;
     }
+    
     bool operator ==(const Time& time) const
     {
         return value.first == time.value.first && value.second == time.value.second;
@@ -76,6 +82,7 @@ struct Time
     {
         return *this > time || *this == time;
     }
+    
     bool operator<=(const Time &time) const
     {
         return *this < time || *this == time;
