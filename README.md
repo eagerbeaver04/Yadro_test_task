@@ -65,7 +65,7 @@ To get a copy of this project on your computer, follow these steps:
    ```
 
 ## Building and Running
-1. Using only gcc compiler
+1. Using only gcc compiler  
 To build and run the project, follow these steps:
     1.1. Check the gcc compiler version:
         ```sh
@@ -75,7 +75,7 @@ To build and run the project, follow these steps:
 
     1.2. Navigate to the project folder.
 
-    1.3 Navigate to `src` directory:
+    1.3 Navigate to src directory:
         ```sh
         cd src
         ```

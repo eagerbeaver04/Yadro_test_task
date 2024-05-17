@@ -119,7 +119,7 @@ void Computer_club::erase_client(const Event &event)
 void Computer_club::kick_out_clients()
 {
     std::vector<std::string> clients;
-    for(int i =0; i < tables.size(); ++i)
+    for(size_t i =0; i < tables.size(); ++i)
     {
         if(!tables[i].is_available)
         {
@@ -139,7 +139,7 @@ void Computer_club::kick_out_clients()
 
 void Computer_club::print_profit()
 {
-    for(int i =0; i< profit.size(); ++i)
+    for(size_t i =0; i< profit.size(); ++i)
         std::cout << Message::make_string(i+1, " ", profit[i], " ", employment[i].to_string())
          << std::endl;
 }

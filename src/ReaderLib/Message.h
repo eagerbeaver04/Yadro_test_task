@@ -26,4 +26,8 @@ public:
         make_string(os, std::forward<Args>(args)...);
         return os.str();
     }
+    static std::string make_string()
+    {
+        return std::string();
+    }
 };
