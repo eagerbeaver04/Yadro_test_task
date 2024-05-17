@@ -67,6 +67,7 @@ To get a copy of this project on your computer, follow these steps:
 ## Building and Running
 1. Using only gcc compiler  
 To build and run the project, follow these steps:
+
     1.1. Check the gcc compiler version:
         ```sh
         g++ --version
@@ -99,13 +100,13 @@ To build and run the project, follow these steps:
 
     If the compiler is not installed, you need to install it.  
 
-    2.2 Navigate to the project folder  
+    2.2 Navigate to the project folder.    
 
     2.3 Create `build` directory  
     ```sh
     mkdir build
     ```
-    
+
     2.4 Navigate to `build` folder  
     ```sh
     cd build
