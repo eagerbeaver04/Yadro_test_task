@@ -9,7 +9,7 @@ struct Event
     std::string name;
     std::string extra_info;
 
-    std::string serialize()
+    std::string serialize() const
     {
         return Message::make_string(time.to_string(), " ",
                                     id, " ", name, " ", extra_info);
