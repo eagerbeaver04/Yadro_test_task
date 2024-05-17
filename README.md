@@ -30,7 +30,7 @@ The input data is a text file containing:
 4. A list of incoming events, separated by new lines.
 
 ## Example Input File
-The project includes a test file `test.txt` with the following content:
+The project includes a test file `test.txt` with the following content:  
 3  
 09:00 19:00  
 10  
