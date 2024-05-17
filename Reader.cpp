@@ -9,7 +9,6 @@ void Reader::read(const std::string& filename)
         return;
     }
 
-
     std::string line;
 
     std::getline(file, line);
@@ -20,7 +19,7 @@ void Reader::read(const std::string& filename)
     std::getline(file, line);
     int cost_per_hour = std::atoi(line.c_str());
 
-    Computer_club club(number_of_tables, cost_per_hour, opening_time) ;
+    Computer_club club(number_of_tables, cost_per_hour, opening_time);
 
     std::cout << opening_time.first.to_string() << std::endl;
 

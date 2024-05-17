@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Message.h"
 
 struct Time

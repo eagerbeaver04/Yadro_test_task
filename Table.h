@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Event.h"
-#include <queue>
-#include <iostream>
 
 struct Table
 {

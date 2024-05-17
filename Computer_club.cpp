@@ -21,8 +21,8 @@ void Computer_club::sit_down(const Event& event)
     int desired_table = std::atoi(event.extra_info.c_str());
     --desired_table;
     {
-        auto client = std::find_if(clients_queue.begin(), clients_queue.end(), [&event](const std::string& str)
-                                            {return str == event.name;});
+        auto client = std::find_if(clients_queue.begin(), clients_queue.end(), 
+         [&event](const std::string& str) {return str == event.name;});
 
         if(client != clients_queue.end())
         {
