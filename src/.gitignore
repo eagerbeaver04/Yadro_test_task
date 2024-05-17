@@ -34,6 +34,7 @@
 .vscode/
 build/
 main
+main_executable
 
 CMakeLists.txt.user
 CMakeCache.txt
