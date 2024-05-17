@@ -27,35 +27,23 @@ struct Time
         value.first += time.value.first;
         return *this;
     }
-    Time& operator -=(const Time& time)
+    Time &operator-=(const Time &time)
     {
-        if (*this >= time)
+        if (value.second < time.value.second)
         {
-            value.second -= time.value.first;
-            if (value.second < 0)
-            {
-                value.second += 60;
-                value.first -= 1;
-            }
-            value.first -= time.value.first;
-            return *this;
+            value.second += 60;
+            value.first -= 1;
         }
-        Time sub = time;
-        sub.value.second -= value.first;
-        if (sub.value.second < 0)
-        {
-            sub.value.second += 60;
-            sub.value.first -= 1;
-        }
-        sub.value.first -= value.first;
-        *this = sub;
+        value.second -= time.value.second;
+        value.first -= time.value.first;
         return *this;
     }
-    Time operator - (const Time& time) const
-    {   
-        Time sub = *this;
-        sub-=time;
-        return sub;
+
+    Time operator-(const Time &time) const
+    {
+        Time result = *this;
+        result -= time;
+        return result;
     }
     Time operator + (const Time& time) const
     {

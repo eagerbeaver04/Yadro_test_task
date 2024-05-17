@@ -2,9 +2,11 @@
 
 void Computer_club::count_client_activity(int table_index, Time event_time)
 {
-    Time current = tables[table_index].start_time - event_time;
+    Time current = event_time - tables[table_index].start_time;
+    std::cout << event_time.to_string() << "-"
+                << tables[table_index].start_time.to_string() << "=" << current.to_string() << std::endl;
     employment[table_index] += current;
-    profit[table_index]+=current.ceil_to_hours() * cost_per_hour;
+    profit[table_index] += current.ceil_to_hours() * cost_per_hour;
 }
 
 void Computer_club::add_client(const Event& event)
