@@ -18,7 +18,7 @@ This section describes the project structure, including a list of files and thei
 - [`Reader.h`](src/ReaderLib/Reader.h): Header file implementing the Reader class for reading data from a file.
 - [`Reader.cpp`](src/ReaderLib/Reader.cpp): Source file containing the implementation of the Reader class methods.
 - [`main.cpp`](src/main.cpp): Main source file containing the entry point of the program.
-- [`test.txt`](text.txt): Text file with example input data for testing the program.
+- [`test.txt`](test.txt): Text file with example input data for testing the program.
 - `README.md`: The file you are reading now. Contains project description, usage instructions, and other information.
 
 ## Input Data Format
