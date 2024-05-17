@@ -27,7 +27,7 @@ struct Time
         value.first += time.value.first;
         return *this;
     }
-    Time &operator-=(const Time &time)
+    Time& operator-=(const Time &time)
     {
         if (value.second < time.value.second)
         {
