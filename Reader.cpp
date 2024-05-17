@@ -37,15 +37,15 @@ void Reader::read(const std::string& filename)
             std::cerr << error.what() << std::endl;
             continue;
         }
+        if (event.time < opening_time.first || event.time > opening_time.second)
+        {
+            std::cerr << Message::make_string(event.time.to_string(), " ", 13, " ", "NotOpenYet")
+                      << std::endl;
+            continue;
+        }
         switch (event.id)
         {
         case 1:
-            if (event.time < opening_time.first || event.time > opening_time.second)
-            {
-                std::cerr << Message::make_string(event.time.to_string(), " ", 13, " ", "NotOpenYet")
-                          << std::endl;
-                continue;
-            }
             try_catch_call(&Computer_club::add_client, &club, event);          
             break;
         case 2:
