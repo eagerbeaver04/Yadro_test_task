@@ -69,17 +69,17 @@ To get a copy of this project on your computer, follow these steps:
 To build and run the project, follow these steps:
 
     1.1. Check the gcc compiler version:
-        ```sh
-        g++ --version
-        ```
-        If the compiler is not installed, you need to install it.
+    ```sh
+    g++ --version
+    ```
+    If the compiler is not installed, you need to install it.
 
     1.2. Navigate to the project folder.
 
     1.3 Navigate to src directory:
-        ```sh
-        cd src
-        ```
+    ```sh
+    cd src
+    ```
     1.4. Compile the project:
     ```sh
     g++ ReaderLib/Computer_club.cpp ReaderLib/Parser.cpp ReaderLib/Reader.cpp main.cpp -o main_executable
@@ -117,7 +117,7 @@ To build and run the project, follow these steps:
     ```
     2.6 Make project
     ```sh 
-    make
+    cmake --build .
     ```
     2.7. Navigate to `src` folder
     ```sh
