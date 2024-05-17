@@ -1,62 +1,85 @@
 # Computer Club Management Program
 
-## Описание
-Этот проект представляет собой программу для управления компьютерным клубом. Программа считывает входные данные из текстового файла, обрабатывает события в течение рабочего дня клуба, подсчитывает выручку и выводит все произошедшие события, а также итоговые данные занятости и выручки по каждому столу в консоль.
+## Description
+This project is a program for managing a computer club. The program reads input data from a text file, processes events during the club's working day, calculates revenue, and outputs all the events that occurred as well as the final occupancy and revenue data for each table to the console.
 
-## Структура проекта
+## Project Structure
 
-В этом разделе описывается структура проекта, включая список файлов и их назначение:
+This section describes the project structure, including a list of files and their purposes:
 
-- `Message.h`: Заголовочный файл, реализующий класс Message для удобного соединения строковых данных.
-- `Time.h`: Заголовочный файл, реализующий структуру Time для работы со временем.
-- `Event.h`: Заголовочный файл, реализующий структуру Event для представления событий в клубе.
-- `Table.h`: Заголовочный файл, реализующий структуру Table для представления столов в клубе.
-- `Computer_club.h`: Заголовочный файл, реализующий класс Computer_club, который управляет клубом.
-- `Computer_club.cpp`: Файл с исходным кодом, содержащий реализацию методов класса Computer_club.
-- `Parser.h`: Заголовочный файл, реализующий класс Parser для парсинга входных данных.
-- `Parser.cpp`: Файл с исходным кодом, содержащий реализацию методов класса Parser.
-- `Reader.h`: Заголовочный файл, реализующий класс Reader для чтения данных из файла.
-- `Reader.cpp`: Файл с исходным кодом, содержащий реализацию методов класса Reader.
-- `main.cpp`: Главный файл с исходным кодом, содержащий точку входа в программу.
-- `test.txt`: Текстовый файл с примером входных данных для тестирования программы.
-- `README.md`: Содержит описание проекта, инструкции по использованию и другую информацию.
+- `Message.h`: Header file implementing the Message class for convenient string data concatenation.
+- `Time.h`: Header file implementing the Time structure for handling time.
+- `Event.h`: Header file implementing the Event structure for representing events in the club.
+- `Table.h`: Header file implementing the Table structure for representing tables in the club.
+- `Computer_club.h`: Header file implementing the Computer_club class, which manages the club.
+- `Computer_club.cpp`: Source file containing the implementation of the Computer_club class methods.
+- `Parser.h`: Header file implementing the Parser class for parsing input data.
+- `Parser.cpp`: Source file containing the implementation of the Parser class methods.
+- `Reader.h`: Header file implementing the Reader class for reading data from a file.
+- `Reader.cpp`: Source file containing the implementation of the Reader class methods.
+- `main.cpp`: Main source file containing the entry point of the program.
+- `test.txt`: Text file with example input data for testing the program.
+- `README.md`: The file you are reading now. Contains project description, usage instructions, and other information.
 
+## Input Data Format
+The input data is a text file containing:
 
-## Формат входных данных
-Входные данные представляют собой текстовый файл, содержащий:
+1. The number of tables as a positive integer.
+2. The start and end time of the club's operation, separated by a space.
+3. The hourly rate of the club as a positive integer.
+4. A list of incoming events, separated by new lines.
 
-1. Количество столов в виде целого положительного числа.
-2. Время начала и окончания работы клуба, разделенные пробелом.
-3. Стоимость часа в клубе в виде целого положительного числа.
-4. Список входящих событий, разделенных переносом строки.
+## Example Input File
+The project includes a test file `test.txt` with the following content:
+3
+09:00 19:00
+10
+08:48 1 client1
+09:41 1 client1
+09:48 1 client2
+09:52 3 client1
+09:54 2 client1 1
+10:25 2 client2 2
+10:58 1 client3
+10:59 2 client3 3
+11:30 1 client4
+11:35 2 client4 2
+11:45 3 client4
+12:33 4 client1
+12:43 4 client2
+15:52 4 client4
+# Requirements
+To build and run the project, you need a C++ compiler (gcc or clang) on Linux, or MinGW/Cygwin on Windows.
 
-Пример входного файла (`test.txt`):
-## Требования
-Для сборки и запуска проекта необходим компилятор C++ (gcc или clang) на Linux, MinGW/Cygwin на Windows.
+## Cloning the Repository
+To get a copy of this project on your computer, follow these steps:
 
-## Клонирование репозитория
-Чтобы получить копию этого проекта на вашем компьютере, выполните следующие шаги:
+1. Open the terminal (command line) on your computer.
 
-1. Откройте терминал (командную строку) на вашем компьютере.
+2. Choose or create a directory where you want to place the project.
 
-2. Выберите или создайте директорию, в которой хотите разместить проект.
-
-3. Введите следующую команду, чтобы склонировать репозиторий:
+3. Enter the following command to clone the repository:
 
    ```sh
    git clone https://github.com/eagerbeaver04/Yadro_test_task.git
    ```
 
-## Сборка и запуск
-Для сборки и запуска проекта выполните следующие шаги:
-1. Перейдите в папку с проектом
+## Building and Running
+To build and run the project, follow these steps:
+1. Navigate to the project folder.
 
-2. Скомпилируйте проект:
+2. Check the gcc compiler version:
+    ```sh
+    g++ --version
+    ```
+    If the compiler is not installed, you need to install it.
+
+4. Compile the project:
     ```sh
     g++ Computer_club.cpp Parser.cpp Reader.cpp main.cpp -o computer_club
     ```
 
-3. Запустите программу с указанием входного файла:
+5. Run the program with the input file:
     ```sh
     ./computer_club test.txt
     ```
