@@ -4,7 +4,7 @@
 TEST(Message, Conversion)
 {
     std::string str = "12 string";
-    EXPECT_EQ(str, Message::make_string("12", " ", "str", "ing"));
+    EXPECT_EQ(str, Message::make_string(12, " ", "str", "ing", ""));
 }
 
 TEST(Message, EmptyInput)

@@ -91,17 +91,22 @@ To build and run the project, follow these steps:
 
 2. Using Cmake utils
 To build and run the project, follow these steps:
-    2.1 Check the gcc compiler version:
+
+    2.1 Check the gcc compiler version:  
      ```sh
     g++ --version
     ```
-    If the compiler is not installed, you need to install it.
-    2.2 Navigate to the project folder
-    2.3 Create `build` directory
+
+    If the compiler is not installed, you need to install it.  
+
+    2.2 Navigate to the project folder  
+
+    2.3 Create `build` directory  
     ```sh
     mkdir build
     ```
-    2.4 Navigate to `build` folder
+    
+    2.4 Navigate to `build` folder  
     ```sh
     cd build
     ```
