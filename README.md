@@ -7,18 +7,18 @@ This project is a program for managing a computer club. The program reads input 
 
 This section describes the project structure, including a list of files and their purposes:
 
-- `Message.h`: Header file implementing the Message class for convenient string data concatenation.
-- `Time.h`: Header file implementing the Time structure for handling time.
-- `Event.h`: Header file implementing the Event structure for representing events in the club.
-- `Table.h`: Header file implementing the Table structure for representing tables in the club.
-- `Computer_club.h`: Header file implementing the Computer_club class, which manages the club.
-- `Computer_club.cpp`: Source file containing the implementation of the Computer_club class methods.
-- `Parser.h`: Header file implementing the Parser class for parsing input data.
-- `Parser.cpp`: Source file containing the implementation of the Parser class methods.
-- `Reader.h`: Header file implementing the Reader class for reading data from a file.
-- `Reader.cpp`: Source file containing the implementation of the Reader class methods.
-- `main.cpp`: Main source file containing the entry point of the program.
-- `test.txt`: Text file with example input data for testing the program.
+- [`Message.h`](src/ReaderLib/Message.h): Header file implementing the Message class for convenient string data concatenation.
+- [`Time.h`](src/ReaderLib/Time.h): Header file implementing the Time structure for handling time.
+- [`Event.h`](src/ReaderLib/Event.h): Header file implementing the Event structure for representing events in the club.
+- [`Table.h`](src/ReaderLib/Table.h): Header file implementing the Table structure for representing tables in the club.
+- [`Computer_club.h`](src/ReaderLib/Computer_club.h): Header file implementing the Computer_club class, which manages the club.
+- [`Computer_club.cpp`](src/ReaderLib/Computer_club.cpp): Source file containing the implementation of the Computer_club class methods.
+- [`Parser.h`](src/ReaderLib/Parser.h): Header file implementing the Parser class for parsing input data.
+- [`Parser.cpp`](src/ReaderLib/Parser.cpp): Source file containing the implementation of the Parser class methods.
+- [`Reader.h`](src/ReaderLib/Reader.h): Header file implementing the Reader class for reading data from a file.
+- [`Reader.cpp`](src/ReaderLib/Reader.cpp): Source file containing the implementation of the Reader class methods.
+- [`main.cpp`](src/main.cpp): Main source file containing the entry point of the program.
+- [`test.txt`](text.txt): Text file with example input data for testing the program.
 - `README.md`: The file you are reading now. Contains project description, usage instructions, and other information.
 
 ## Input Data Format
@@ -31,6 +31,7 @@ The input data is a text file containing:
 
 ## Example Input File
 The project includes a test file `test.txt` with the following content:  
+```
 3  
 09:00 19:00  
 10  
@@ -48,6 +49,7 @@ The project includes a test file `test.txt` with the following content:
 12:33 4 client1  
 12:43 4 client2  
 15:52 4 client4  
+```
 # Requirements
 To build and run the project, you need a C++ compiler (gcc or clang) on Linux, or MinGW/Cygwin on Windows.
 
@@ -65,7 +67,8 @@ To get a copy of this project on your computer, follow these steps:
    ```
 
 ## Building and Running
-1. Using only gcc compiler  
+1. Using only gcc compiler:  
+
 To build and run the project, follow these steps:
 
     1.1. Check the gcc compiler version:
@@ -90,7 +93,8 @@ To build and run the project, follow these steps:
     ./main_executable ../test.txt
     ```
 
-2. Using Cmake utils
+2. Using Cmake utils:
+
 To build and run the project, follow these steps:
 
     2.1 Check the gcc compiler version:  
