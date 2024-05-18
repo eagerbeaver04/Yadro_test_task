@@ -108,6 +108,31 @@ TEST(Parser, TestTrimInPlace)
     EXPECT_EQ(str, "qwerty");
 }
 
+TEST(Parser, ParseTime)
+{
+    Time t1 = {std::make_pair<int,int>(12,45)};
+    Time t2= Parser::parse_time("  12:45  ");
+    EXPECT_EQ(t1,t2);
+    t2 = Parser::parse_time("  12 : 45  ");
+    EXPECT_EQ(t1, t2);
+    EXPECT_THROW(Parser::parse_time("  12  45  "), std::runtime_error);
+    EXPECT_NO_THROW(Parser::parse_time("12 : 45 09 00"));
+}
+
+TEST(Parser, ParseTimeLine)
+{
+    Time t1 = {std::make_pair<int, int>(12, 45)};
+    Time t2 = {std::make_pair<int, int>(9, 0)};
+    auto time_line = Parser::parse_time_line("  12:45  09:00");
+    EXPECT_EQ(time_line.first, t1);
+    EXPECT_EQ(time_line.second, t2);
+    time_line = Parser::parse_time_line("  12 : 45  09 : 00 ");
+    EXPECT_EQ(time_line.first, t1);
+    EXPECT_EQ(time_line.second, t2);
+    EXPECT_THROW(Parser::parse_time_line("12 : 45 09 00"), std::runtime_error);
+    EXPECT_THROW(Parser::parse_time_line("12 45 09 00"), std::runtime_error);
+}
+
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);

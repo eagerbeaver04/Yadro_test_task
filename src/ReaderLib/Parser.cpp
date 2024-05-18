@@ -44,8 +44,13 @@ std::pair<Time, Time>
 {
     std::string trimmed_line = trim(line);
     std::vector<std::pair<int,int>> vector_of_time;
-    auto middle_space = std::find_if(line.begin(), line.end(), [](int c)
-                                  { return std::isspace(c); });
+    auto middle_space = std::find(line.begin(), line.end(), ':');
+    middle_space = std::find_if(middle_space, line.end(), [](int c)
+                                   { return std::isdigit(c); });
+    middle_space = std::find_if(middle_space, line.end(), [](int c)
+                                   { return std::isspace(c); });
+    if(middle_space == line.end())
+        throw std::runtime_error(Message::make_string("Incorrect data in line: ", line));
     return {parse_time(std::string(line.begin(), middle_space)),
      parse_time(std::string(middle_space, line.end()))};
 }
