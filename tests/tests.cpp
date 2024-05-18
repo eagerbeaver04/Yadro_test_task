@@ -133,6 +133,74 @@ TEST(Parser, ParseTimeLine)
     EXPECT_THROW(Parser::parse_time_line("12 45 09 00"), std::runtime_error);
 }
 
+TEST(Parser, ParseActionLine)
+{
+    Event event1 = Parser::parse_action_line("08:48 1 client1");
+    Event event2 = {std::make_pair<int, int>(8, 48), 1, "client1"};
+    EXPECT_EQ(event1, event2);
+    event1 = Parser::parse_action_line("08:48 1 client1 2");
+    event2 = {std::make_pair<int, int>(8, 48), 1, "client1", "2"};
+    EXPECT_EQ(event1, event2);
+}
+
+class ClubTest : public ::testing::Test
+{
+protected:
+    Computer_club club{3,10,
+     std::make_pair<Time,Time>({std::make_pair<int,int>(10,0)},
+      {std::make_pair<int,int>(20,0)})};
+};
+
+TEST_F(ClubTest, AddClient)
+{
+    Event event= {std::make_pair(10,0),1,"client1"};
+    EXPECT_NO_THROW(club.add_client(event));
+    EXPECT_THROW(club.add_client(event), std::runtime_error);
+}
+
+TEST_F(ClubTest, SitDown)
+{
+    Event event = {std::make_pair(10, 0), 1, "client1"};
+    EXPECT_NO_THROW(club.add_client(event));
+    event = {std::make_pair(11, 0), 2, "client1", "1"};
+    EXPECT_NO_THROW(club.sit_down(event));
+    EXPECT_THROW(club.sit_down(event), std::runtime_error);
+    event = {std::make_pair(12, 0), 2, "client2", "1"};
+    EXPECT_THROW(club.sit_down(event), std::runtime_error);
+    event = {std::make_pair(12, 0), 1, "client2", "1"};
+    EXPECT_NO_THROW(club.add_client(event));
+    event ={std::make_pair(13, 0), 2, "client2", "1"};
+    EXPECT_THROW(club.sit_down(event), std::runtime_error);
+    event = {std::make_pair(14, 0), 2, "client2", "2"};
+    EXPECT_NO_THROW(club.sit_down(event));
+}
+
+TEST_F(ClubTest, ClientWait)
+{
+    Event event = {std::make_pair(10, 0), 3, "client1"};
+    EXPECT_THROW(club.client_wait(event), std::runtime_error);
+    event = {std::make_pair(10, 0), 1, "client1"};
+    EXPECT_NO_THROW(club.add_client(event));
+    event = {std::make_pair(11, 0), 3, "client1"};
+    EXPECT_THROW(club.client_wait(event), std::runtime_error);
+    for(int i =2; i < 5; ++i)
+    {
+        event = {std::make_pair(12, 0), 1, Message::make_string("client", i)};
+        EXPECT_NO_THROW(club.add_client(event));
+    }
+    std::stringstream buffer;
+    std::streambuf *old = std::cout.rdbuf(buffer.rdbuf());
+    event = {std::make_pair(13, 0), 3, "client1"};
+    EXPECT_NO_THROW(club.client_wait(event));
+    std::cout.rdbuf(old);
+    EXPECT_EQ(buffer.str(), "13:00 11 client1\n");
+}
+
+TEST_F(ClubTest, EraseClient)
+{
+    
+}
+
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);

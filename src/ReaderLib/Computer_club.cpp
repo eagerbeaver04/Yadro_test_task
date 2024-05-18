@@ -66,14 +66,14 @@ void Computer_club::client_wait(const Event& event)
     int queue_size = std::distance(clients_queue.begin(), clients_queue.end());
     int number_of_available_tables = std::count_if(tables.begin(), tables.end(),
      [](const Table& table){return table.is_available == true;});
-
+    
     if(queue_size > number_of_tables)
     {
         clients_queue.erase(client);
         std::cout << Message::make_string(
             event.time.to_string(), " ", 11, " ", event.name) << std::endl;
     }
-    if (number_of_available_tables > 0)
+    else if (number_of_available_tables > 0)
     {
         throw(std::runtime_error(Message::make_string(
             event.time.to_string(), " ", 13, " ", "ICanWaitNoLonger!")));

@@ -118,12 +118,12 @@ To get a copy of this project on your computer, follow these steps:
     cd build
     ```
 
-    2.5. Build the project:
+    2.5. Generating build files using CMake:
     ```sh
     cmake ..
     ```
 
-    2.6. Make the project:
+    2.6. Building the project using the generated build files:
     ```sh
     cmake --build .
     ```
