@@ -6,5 +6,6 @@ set(SOURS ${CMAKE_CURRENT_BINARY_DIR}/../src)
 
 add_executable(runTests tests.cpp)
 include_directories(../src/ReaderLib)
+
 target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)
-target_link_libraries(runTests ${SOURS}/ReaderLib pthread)
+target_link_libraries(runTests ${SOURS}/ReaderLib reader_lib)

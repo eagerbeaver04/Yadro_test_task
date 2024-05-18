@@ -88,6 +88,26 @@ TEST_F(TimeTest, Ceiling)
     EXPECT_EQ(15, t1.ceil_to_hours());
 }
 
+TEST(Parser, TestTrim)
+{
+    std::string str;
+    str = Parser::trim(" 123_123    ");
+    EXPECT_EQ("123_123", str);
+    str = Parser::trim("qwerty    ");
+    EXPECT_EQ("qwerty", str);
+    str = Parser::trim("   qwerty");
+    EXPECT_EQ("qwerty", str);
+}
+
+TEST(Parser, TestTrimInPlace)
+{
+    std::string str = " qwerty ";
+    std::string str2 = str;
+    Parser::trim_in_place(str);
+    EXPECT_NE(str, str2);
+    EXPECT_EQ(str, "qwerty");
+}
+
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);
