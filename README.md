@@ -67,9 +67,8 @@ To get a copy of this project on your computer, follow these steps:
    git clone https://github.com/eagerbeaver04/Yadro_test_task.git
    ```
 
-## Run tests
- To perform tests, follow these steps:
-If you want to run tests you need to use CMake build and run variant.
+## Unit tests
+    If you want to run tests you need to use CMake build and run variant.
 
 ## Building and Running
 
