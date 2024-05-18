@@ -70,11 +70,7 @@ To get a copy of this project on your computer, follow these steps:
 ## Run tests
  To perform tests, follow these steps:
 
-    2.1. Choose folder to install gtest:
-    2.2. Install gtest
-    ```sh
-    sudo apt-get install libgtest-dev
-    ```
+
     
 If you want to run tests you need to use CMake build and run variant.
 
@@ -108,46 +104,47 @@ If you want to run tests you need to use CMake build and run variant.
     ```
 
 2. Using CMake utils:
-    If CMake is not installed, you need to install it.
+
+    2.1. If CMake is not installed, you need to install it.
     ```sh
     sudo apt-get install cmake # install cmake
     ```
-    To build and run the project, follow these steps:
 
-    2.1. Check the gcc compiler version:
+    2.2. Choose folder to install Google Test Framework.
+
+    2.3. Install gtest
     ```sh
-    g++ --version
+    sudo apt-get install libgtest-dev
     ```
-    If the compiler is not installed, you need to install it.
 
-    2.2. Navigate to the project folder.
+    2.4. Navigate to the project folder.
 
-    2.3. Create `build` directory:
+    2.5. Create `build` directory:
     ```sh
     mkdir build
     ```
 
-    2.4. Navigate to `build` folder:
+    2.6. Navigate to `build` folder:
     ```sh
     cd build
     ```
 
-    2.5. Generating build files using CMake:
+    2.7. Generating build files using CMake:
     ```sh
     cmake ..
     ```
 
-    2.6. Building the project using the generated build files:
+    2.8. Building the project using the generated build files:
     ```sh
     cmake --build .
     ```
 
-    2.7. Navigate to `src` folder:
+    2.9. Navigate to `src` folder:
     ```sh
     cd src
     ```
 
-    2.8. Run the program with the path to input file:
+    2.10. Run the program with the path to input file:
     ```sh
     ./main_executable ../../test.txt
     ```
