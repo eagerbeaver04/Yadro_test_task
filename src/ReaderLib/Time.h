@@ -78,6 +78,11 @@ struct Time
         return value.first == time.value.first && value.second == time.value.second;
     }
 
+    bool operator!=(const Time &time) const
+    {
+        return !(*this == time);
+    }
+
     bool operator >= (const Time& time) const
     {
         return *this > time || *this == time;
