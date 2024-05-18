@@ -67,6 +67,17 @@ To get a copy of this project on your computer, follow these steps:
    git clone https://github.com/eagerbeaver04/Yadro_test_task.git
    ```
 
+## Run tests
+ To perform tests, follow these steps:
+
+    2.1. Choose folder to install gtest:
+    2.2. Install gtest
+    ```sh
+    sudo apt-get install libgtest-dev
+    ```
+    
+If you want to run tests you need to use CMake build and run variant.
+
 ## Building and Running
 
 1. Using only gcc compiler:
@@ -97,7 +108,10 @@ To get a copy of this project on your computer, follow these steps:
     ```
 
 2. Using CMake utils:
-
+    If CMake is not installed, you need to install it.
+    ```sh
+    sudo apt-get install cmake # install cmake
+    ```
     To build and run the project, follow these steps:
 
     2.1. Check the gcc compiler version:
@@ -137,3 +151,6 @@ To get a copy of this project on your computer, follow these steps:
     ```sh
     ./main_executable ../../test.txt
     ```
+
+
+
