@@ -20,28 +20,24 @@ TEST(Time, EmptyConstructor)
     EXPECT_EQ(0, t.value.second);
 }
 
-TEST(Time, Ceiling)
+class TimeTest : public ::testing::Test
 {
-    Time t1{std::make_pair<int,int>(12,12)};
-    EXPECT_EQ(13, t1.ceil_to_hours());
-    t1 = {std::make_pair<int, int>(0, 0)};
-    EXPECT_EQ(0, t1.ceil_to_hours());
-    t1 = {std::make_pair<int, int>(4, 1)};
-    EXPECT_EQ(5, t1.ceil_to_hours());
-    t1 = {std::make_pair<int, int>(14, 59)};
-    EXPECT_EQ(15, t1.ceil_to_hours());
-}
+protected:
+    Time t1{std::make_pair(12, 12)};
+    Time t2{std::make_pair(12, 12)};
+    Time t3{std::make_pair(10, 12)};
+    Time t4{std::make_pair(20, 24)};
+};
 
-TEST(Time, ComparationOperators)
+TEST_F(TimeTest, ComparationOperators)
 {
-    Time t1{std::make_pair<int, int>(12, 12)};
-    Time t2{std::make_pair<int, int>(12, 12)};
-    EXPECT_EQ(t1,t2);
+    EXPECT_EQ(t1, t2);
     EXPECT_EQ(true, t1 == t2);
     EXPECT_EQ(false, t1 != t2);
     EXPECT_EQ(true, t2 >= t1);
     EXPECT_EQ(true, t2 <= t1);
-    t2 = {std::make_pair<int,int>(13,12)};
+
+    t2 = {std::make_pair<int, int>(13, 12)};
     EXPECT_NE(t1, t2);
     EXPECT_NE(true, t1 == t2);
     EXPECT_NE(false, t1 != t2);
@@ -51,27 +47,45 @@ TEST(Time, ComparationOperators)
     EXPECT_NE(true, t2 <= t1);
 }
 
-TEST(Time, AssignmentOperators)
+TEST_F(TimeTest, AssignmentOperators)
 {
-    Time t1{std::make_pair<int, int>(10, 12)};
-    Time t2{std::make_pair<int, int>(20, 24)};
+    t1 = {std::make_pair<int, int>(10, 12)};
+    t2 = {std::make_pair<int, int>(20, 24)};
     Time t3 = t2;
     EXPECT_EQ(t3, t2);
+
     Time t4 = t2;
-    t4-=t1;
+    t4 -= t1;
     EXPECT_EQ(t1, t4);
-    t1+=t1;
+
+    t1 += t1;
     EXPECT_EQ(t1, t2);
 }
 
-TEST(Time, BinaryOperators)
+TEST_F(TimeTest, BinaryOperators)
 {
-    Time t1{std::make_pair<int, int>(10, 12)};
-    Time t2{std::make_pair<int, int>(20, 24)};
+    t1 = {std::make_pair<int, int>(10, 12)};
+    t2 = {std::make_pair<int, int>(20, 24)};
     Time t3 = t2 - t1;
     EXPECT_EQ(t3, t1);
+
     Time t4 = t3 + t1;
     EXPECT_EQ(t4, t2);
+}
+
+TEST_F(TimeTest, Ceiling)
+{
+    t1 = {std::make_pair<int, int>(12, 12)};
+    EXPECT_EQ(13, t1.ceil_to_hours());
+
+    t1 = {std::make_pair<int, int>(0, 0)};
+    EXPECT_EQ(0, t1.ceil_to_hours());
+
+    t1 = {std::make_pair<int, int>(4, 1)};
+    EXPECT_EQ(5, t1.ceil_to_hours());
+
+    t1 = {std::make_pair<int, int>(14, 59)};
+    EXPECT_EQ(15, t1.ceil_to_hours());
 }
 
 int main(int argc, char **argv)
