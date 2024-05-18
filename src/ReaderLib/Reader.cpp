@@ -34,12 +34,12 @@ void Reader::read(const std::string& filename)
         }
         catch(const std::exception& error)
         {
-            std::cerr << error.what() << std::endl;
+            std::cout << error.what() << std::endl;
             continue;
         }
         if (event.time < opening_time.first || event.time > opening_time.second)
         {
-            std::cerr << Message::make_string(event.time.to_string(), " ", 13, " ", "NotOpenYet")
+            std::cout << Message::make_string(event.time.to_string(), " ", 13, " ", "NotOpenYet")
                       << std::endl;
             continue;
         }
@@ -58,7 +58,7 @@ void Reader::read(const std::string& filename)
             try_catch_call(&Computer_club::erase_client, &club, event);
             break;
         default:
-            std::cerr << "Invalid id command in line" << line << std::endl;
+            std::cout << "Invalid id command in line" << line << std::endl;
             break;
         }
     }
