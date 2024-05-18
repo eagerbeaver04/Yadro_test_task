@@ -98,7 +98,7 @@ void Computer_club::erase_client(const Event &event)
                 std::string name = *clients_queue.begin();
                 tables[index] = {false, name, event.time};
                 clients_queue.erase(clients_queue.begin());
-               std::cout << Message::make_string(
+                std::cout << Message::make_string(
                     event.time.to_string(), " ", 12, " ", name, " ", index+1) << std::endl;
             }
             return;

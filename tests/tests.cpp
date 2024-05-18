@@ -198,7 +198,35 @@ TEST_F(ClubTest, ClientWait)
 
 TEST_F(ClubTest, EraseClient)
 {
-    
+    Event event = {std::make_pair(10, 0), 4, "client1"};
+    EXPECT_THROW(club.erase_client(event), std::runtime_error);
+    event = {std::make_pair(10, 0), 1, "client1"};
+    EXPECT_NO_THROW(club.add_client(event));
+    event = {std::make_pair(10, 0), 4, "client2"};
+    EXPECT_THROW(club.erase_client(event), std::runtime_error);
+    event = {std::make_pair(11, 0), 1, "client2"};
+    EXPECT_NO_THROW(club.add_client(event));
+    std::stringstream buffer;
+    std::streambuf *old = std::cout.rdbuf(buffer.rdbuf());
+    event = {std::make_pair(12, 0), 4, "client1"};
+    EXPECT_NO_THROW(club.erase_client(event));
+    std::cout.rdbuf(old);
+    EXPECT_EQ(buffer.str(), "");
+
+    event = {std::make_pair(10, 0), 1, "client1"};
+    EXPECT_NO_THROW(club.add_client(event));
+    event = {std::make_pair(13, 0), 2, "client1", "1"};
+    EXPECT_NO_THROW(club.sit_down(event));
+    old = std::cout.rdbuf(buffer.rdbuf());
+    event = {std::make_pair(14, 0), 4, "client1"};
+    EXPECT_NO_THROW(club.erase_client(event));
+    std::cout.rdbuf(old);
+    EXPECT_EQ(buffer.str(), "14:00 12 client2 1\n");
+}
+
+TEST_F(ClubTest, CheckProfit)
+{
+
 }
 
 int main(int argc, char **argv)
