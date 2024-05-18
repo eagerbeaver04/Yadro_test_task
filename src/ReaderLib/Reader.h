@@ -2,6 +2,7 @@
 
 #include "Parser.h"
 #include <fstream>
+#include <functional>
 
 class Reader
 {

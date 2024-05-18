@@ -104,7 +104,7 @@ To get a copy of this project on your computer, follow these steps:
 
     2.1. If CMake is not installed, you need to install it.
     ```sh
-    sudo apt-get install cmake # install cmake
+    sudo apt-get install build-essential cmake # install cmake
     ```
 
     2.2. Choose folder to install Google Test Framework.
@@ -154,7 +154,7 @@ To get a copy of this project on your computer, follow these steps:
     cd ../
     ```
 
-    2.12. Run tests:
+    2.12. Run tests: (run from this folder. In other cases last test will not find file `test.txt`)
     ```sh
     tests/runTests
     ```
