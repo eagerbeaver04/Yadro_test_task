@@ -17,43 +17,6 @@ struct Time
         os << value.second;
         return os.str();
     }
-
-    Time& operator+=(const Time &time)
-    {
-        value.second += time.value.second;
-        if (value.second >= 60)
-        {
-            value.second -= 60;
-            value.first += 1;
-        }
-        value.first += time.value.first;
-        return *this;
-    }
-
-    Time& operator-=(const Time &time)
-    {
-        if (value.second < time.value.second)
-        {
-            value.second += 60;
-            value.first -= 1;
-        }
-        value.second -= time.value.second;
-        value.first -= time.value.first;
-        return *this;
-    }
-
-    Time operator-(const Time &time) const
-    {
-        Time result = *this;
-        result -= time;
-        return result;
-    }
-    Time operator + (const Time& time) const
-    {
-        Time sum = *this;
-        sum+=time;
-        return sum;
-    }
     
     bool operator<(const Time &time) const 
     {
@@ -93,11 +56,52 @@ struct Time
         return *this < time || *this == time;
     }
 
+    Time &operator+=(const Time &time)
+    {
+        value.second += time.value.second;
+        if (value.second >= 60)
+        {
+            value.second -= 60;
+            value.first += 1;
+        }
+        value.first += time.value.first;
+        return *this;
+    }
+
+    Time &operator-=(const Time &time)
+    {
+        if (value.second < time.value.second)
+        {
+            value.second += 60;
+            value.first -= 1;
+        }
+        value.second -= time.value.second;
+        value.first -= time.value.first;
+        return *this;
+    }
+
+    Time operator-(const Time &time) const
+    {
+        if(*this >= time)
+        {
+            Time result = *this;
+            result -= time;
+            return result;
+        }
+        Time result = time;
+        result -=*this;
+        return result;
+    }
+
+    Time operator+(const Time &time) const
+    {
+        Time sum = *this;
+        sum += time;
+        return sum;
+    }
+
     int ceil_to_hours() const
     {
         return value.second == 0 ? value.first : value.first+1;
     }
-
-
-
 };

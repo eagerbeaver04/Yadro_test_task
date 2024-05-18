@@ -36,7 +36,7 @@ void Computer_club::sit_down(const Event& event)
                 event.time.to_string()," ", 13," ", "PlaceIsBusy")));
         }
     }
-    auto client = std::find_if(tables.begin(), tables.end(), [&event](Table& table)
+    auto client = std::find_if(tables.begin(), tables.end(), [&event](const Table& table)
         {   return !table.is_available && table.name == event.name;});
     if(client != tables.end())
     {

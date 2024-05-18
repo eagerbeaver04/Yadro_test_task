@@ -7,7 +7,7 @@ class Reader
 {
 private:
     template <class F, class... Args>
-    static auto try_catch_call(F &&fun, Args &&...args) 
+    static auto try_catch_call(F &&fun, Args &&...args) noexcept
     {
         try
         {
