@@ -69,14 +69,12 @@ To get a copy of this project on your computer, follow these steps:
 
 ## Run tests
  To perform tests, follow these steps:
-
-
-    
 If you want to run tests you need to use CMake build and run variant.
 
 ## Building and Running
 
 1. Using only gcc compiler:
+    Unit tests in this variant will be not available.
 
     To build and run the project, follow these steps:
 
@@ -147,6 +145,19 @@ If you want to run tests you need to use CMake build and run variant.
     2.10. Run the program with the path to input file:
     ```sh
     ./main_executable ../../test.txt
+    ```
+
+    2.11. If you want to tun Unit tests, follow these steps:
+
+    Back to `build` folder:
+
+    ```sh
+    cd ../
+    ```
+
+    2.12. Run tests:
+    ```sh
+    tests/runTests
     ```
 
 
