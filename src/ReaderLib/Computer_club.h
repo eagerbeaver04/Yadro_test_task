@@ -2,7 +2,7 @@
 
 #include "Table.h"
 #include <vector>
-#include <unordered_set>
+#include <deque>
 #include <algorithm>
 #include <iostream>
 
@@ -12,7 +12,7 @@ private:
     int number_of_tables;
     int cost_per_hour;
     std::pair<Time, Time> opening_time;
-    std::unordered_set<std::string> clients_queue;
+    std::deque<std::string> clients_queue;
     std::vector<int> profit;
     std::vector<Table> tables;
     std::vector<Time> employment;
@@ -38,4 +38,5 @@ public :
     void kick_out_clients();
 
     void print_profit();
+    
 };

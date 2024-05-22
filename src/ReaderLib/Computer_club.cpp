@@ -9,8 +9,8 @@ void Computer_club::count_client_activity(int table_index, Time event_time)
 
 void Computer_club::add_client(const Event& event)
 {
-    if(clients_queue.find(event.name) == clients_queue.end())
-        clients_queue.insert(event.name);
+    if(std::find(clients_queue.begin(), clients_queue.end(), event.name) == clients_queue.end())
+        clients_queue.push_back(event.name);
     else
         throw(std::runtime_error(Message::make_string(
              event.time.to_string(), " ", 13, " ", "YouShallNotPass")));
@@ -97,7 +97,7 @@ void Computer_club::erase_client(const Event &event)
             {
                 std::string name = *clients_queue.begin();
                 tables[index] = {false, name, event.time};
-                clients_queue.erase(clients_queue.begin());
+                clients_queue.pop_front();
                 std::cout << Message::make_string(
                     event.time.to_string(), " ", 12, " ", name, " ", index+1) << std::endl;
             }
